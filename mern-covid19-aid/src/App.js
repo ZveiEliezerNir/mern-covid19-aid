@@ -13,10 +13,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Navbar from "./components/navbar.component"
 import HomePage from "./components/home-page.component";
-import CreateManagers from "./components/create-managers.component";
 
-/*import ReadManagers from "./components/read-managers.component";
-import UpdateManagers from "./components/update-managers.component";
+import CreateManagers from "./components/create-managers.component";
+import ViewManagers from "./components/view-managers.component";
+/*import UpdateManagers from "./components/update-managers.component";
 import DeleteManagers from "./components/delete-managers.component";*/
 
 
@@ -29,9 +29,10 @@ class App extends Component {
           <br />
           <Route path="/" exact component={HomePage} />
 
-          <Route path="/managers-create/" component={CreateManagers} />
+          <Route path="/managers/create/" component={CreateManagers} />
+          <Route path="/managers/view" component={ViewManagers} />
+
           {/*
-          <Route path="/managers/read" component={ReadManagers} />
           <Route path="/managers/update/:id" component={UpdateManagers} />
           <Route path="/managers/delete/:id" component={DeleteManagers} />
           */}
