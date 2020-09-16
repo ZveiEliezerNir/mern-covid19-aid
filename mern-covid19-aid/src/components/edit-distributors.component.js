@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateManagers extends Component {
+export default class EditDistributors extends Component {
   constructor(props) {
     super(props);
-    
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -26,6 +24,28 @@ export default class CreateManagers extends Component {
       phone: 0,
       city: '',
     }
+  }
+
+  componentDidMount() {
+
+    console.log(this.props.match.params.id);
+
+    axios.get('http://localhost:8080/distributors/' + this.props.match.params.id)
+      .then(response => {
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+          email: response.data.email,
+          phone: response.data.phone,
+          city: response.data.city,
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+
+      })
   }
 
   onChangeUsername(e) {
@@ -73,7 +93,7 @@ export default class CreateManagers extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const manager = {
+    const distributor = {
       username: this.state.username,
       password: this.state.password,
       firstname: this.state.firstname,
@@ -83,9 +103,9 @@ export default class CreateManagers extends Component {
       city: this.state.city
     }
 
-    console.log(manager);
+    console.log(distributor);
 
-    axios.post('http://localhost:8080/managers/add', manager)
+    axios.post('http://localhost:8080/distributors/update/' + this.props.match.params.id, distributor)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -93,83 +113,83 @@ export default class CreateManagers extends Component {
 
   render() {
     return (
-    <div>
-      <h3>Create New Manager</h3>
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-          <label>Username: </label>
-          <input  type="text"
+      <div>
+        <h3>Edit Distributor</h3>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Username: </label>
+            <input type="text"
               required
               className="form-control"
               value={this.state.username}
               onChange={this.onChangeUsername}
-              />
-        </div>
-        <div className="form-group"> 
-          <label>Password: </label>
-          <input  type="text"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password: </label>
+            <input type="text"
               required
               className="form-control"
               value={this.state.password}
               onChange={this.onChangePassword}
-              />
-        </div>
-        <div className="form-group">
-          <label>First Name</label>
-          <input 
-              type="text" 
+            />
+          </div>
+          <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.firstname}
               onChange={this.onChangeFirstname}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Last Name</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.lastname}
               onChange={this.onChangeLastname}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>E-Mail</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>E-Mail</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.email}
               onChange={this.onChangeEmail}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.phone}
               onChange={this.onChangePhone}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>City</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>City</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.city}
               onChange={this.onChangeCity}
-              />
-        </div>
-        
+            />
+          </div>
 
-        <div className="form-group">
-          <input type="submit" value="Create Manager" className="btn btn-primary" />
-        </div>
-      </form>
-    </div>
+
+          <div className="form-group">
+            <input type="submit" value="Update" className="btn btn-primary" />
+          </div>
+        </form>
+      </div>
     )
   }
 }

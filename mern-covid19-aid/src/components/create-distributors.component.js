@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateManagers extends Component {
+export default class CreateDistributors extends Component {
   constructor(props) {
     super(props);
     
@@ -73,7 +73,7 @@ export default class CreateManagers extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const manager = {
+    const distributor = {
       username: this.state.username,
       password: this.state.password,
       firstname: this.state.firstname,
@@ -83,9 +83,9 @@ export default class CreateManagers extends Component {
       city: this.state.city
     }
 
-    console.log(manager);
+    console.log(distributor);
 
-    axios.post('http://localhost:8080/managers/add', manager)
+    axios.post('http://localhost:8080/distributors/add', distributor)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -94,7 +94,7 @@ export default class CreateManagers extends Component {
   render() {
     return (
     <div>
-      <h3>Create New Manager</h3>
+      <h3>Create New Distributor</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -166,7 +166,7 @@ export default class CreateManagers extends Component {
         
 
         <div className="form-group">
-          <input type="submit" value="Create Manager" className="btn btn-primary" />
+          <input type="submit" value="Create Distributor" className="btn btn-primary" />
         </div>
       </form>
     </div>

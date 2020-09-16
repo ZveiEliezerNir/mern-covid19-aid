@@ -16,8 +16,14 @@ import HomePage from "./components/home-page.component";
 
 import CreateManagers from "./components/create-managers.component";
 import ViewManagers from "./components/view-managers.component";
-/*import UpdateManagers from "./components/update-managers.component";
-import DeleteManagers from "./components/delete-managers.component";*/
+import EditManagers from "./components/edit-managers.component";
+
+
+import CreateDistributors from "./components/create-distributors.component"
+import ViewDistributors from "./components/view-distributors.component"
+import EditDistributors from "./components/edit-distributors.component"
+
+import CreateTarget from "./components/create-target.componet"
 
 
 class App extends Component {
@@ -29,13 +35,17 @@ class App extends Component {
           <br />
           <Route path="/" exact component={HomePage} />
 
-          <Route path="/managers/create/" component={CreateManagers} />
+          <Route path="/managers/create" component={CreateManagers} />
           <Route path="/managers/view" component={ViewManagers} />
+          <Route path="/managers/update/:id" component={EditManagers} />
 
-          {/*
-          <Route path="/managers/update/:id" component={UpdateManagers} />
-          <Route path="/managers/delete/:id" component={DeleteManagers} />
-          */}
+          <Route path="/distributors/create" component={CreateDistributors} />
+          <Route path="/distributors/view" component={ViewDistributors} />
+          <Route path="/distributors/update/:id" component={EditDistributors} />
+
+          <Route path="/targtes/create" component={CreateTarget} />
+          
+
         </div>
       </Router>
     );
