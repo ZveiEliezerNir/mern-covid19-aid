@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 
-export default class CreateTarget extends Component {
+export default class EditTargets extends Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +24,26 @@ export default class CreateTarget extends Component {
             latitude: 0.0
         }
 
+
     }
+
+    componentDidMount() {
+
+        console.log(this.props.match.params.id);
+    
+        axios.get('http://localhost:8080/targets/' + this.props.match.params.id)
+          .then(response => {
+            this.setState({
+              address: response.data.address,
+              city: response.data.city,
+              date: new Date(response.data.date)
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+    
+          })
+      }
 
     onChangeAddress(e) {
         this.setState({
@@ -77,7 +96,7 @@ export default class CreateTarget extends Component {
                 }
 
                 console.log(target);
-                axios.post('http://localhost:8080/targets/add', target)
+                axios.post('http://localhost:8080/targets/update/' + this.props.match.params.id, target)
                     .then(res => console.log(res.data));
                 window.location = '/';
             });
@@ -86,7 +105,7 @@ export default class CreateTarget extends Component {
     render() {
         return (
             <div>
-                <h3>Create New Target</h3>
+                <h3>Edit Target</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Address: </label>

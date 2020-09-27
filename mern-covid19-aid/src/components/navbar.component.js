@@ -16,7 +16,7 @@ export default class Navbar extends Component {
               <Link to="/distributors/view/" className="nav-link">Distributors</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/targtes/create" className="nav-link">Targets</Link>
+              <Link to="/targets/view/" className="nav-link">Targets</Link>
             </li>
           </ul>
         </div>

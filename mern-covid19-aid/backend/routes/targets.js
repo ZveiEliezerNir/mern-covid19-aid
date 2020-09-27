@@ -25,6 +25,8 @@ router.route('/add').post((req, res) => {
     const address = req.body.address;
     const city = req.body.city;
     const date = Date.parse(req.body.date);
+    const longitude = req.body.longitude;
+    const latitude = req.body.latitude;
 
     console.log(city);
 
@@ -32,7 +34,9 @@ router.route('/add').post((req, res) => {
     const newTarget = new Target({
         address,
         city,
-        date
+        date,
+        longitude,
+        latitude
     });
 
     console.log(newTarget);
@@ -61,9 +65,11 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Target.findById(req.params.id)
         .then(target => {
-            target.username = req.body.address;
-            target.password = Date.parse(req.body.date);
+            target.address = req.body.address;
             target.city = req.body.city;
+            target.date = Date.parse(req.body.date);
+            target.longitude = req.body.longitude;
+            target.latitude = req.body.latitude;
 
             target.save()
                 .then(() => res.json('Target updated!'))

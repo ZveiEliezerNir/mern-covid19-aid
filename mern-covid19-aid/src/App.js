@@ -24,6 +24,8 @@ import ViewDistributors from "./components/view-distributors.component"
 import EditDistributors from "./components/edit-distributors.component"
 
 import CreateTarget from "./components/create-target.componet"
+import EditTargets from "./components/edit-targets.component";
+import ViewTargets from "./components/view-targets.component";
 
 
 class App extends Component {
@@ -43,7 +45,9 @@ class App extends Component {
           <Route path="/distributors/view" component={ViewDistributors} />
           <Route path="/distributors/update/:id" component={EditDistributors} />
 
-          <Route path="/targtes/create" component={CreateTarget} />
+          <Route path="/targets/create" component={CreateTarget} />
+          <Route path="/targets/view" component={ViewTargets} />
+          <Route path="/targets/update/:id" component={EditTargets} />
           
 
         </div>

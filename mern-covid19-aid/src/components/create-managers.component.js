@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export default class CreateManagers extends Component {
   constructor(props) {
     super(props);
-    
+
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -93,83 +93,83 @@ export default class CreateManagers extends Component {
 
   render() {
     return (
-    <div>
-      <h3>Create New Manager</h3>
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-          <label>Username: </label>
-          <input  type="text"
+      <div>
+        <h3>Create New Manager</h3>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Username: </label>
+            <input type="text"
               required
               className="form-control"
               value={this.state.username}
               onChange={this.onChangeUsername}
-              />
-        </div>
-        <div className="form-group"> 
-          <label>Password: </label>
-          <input  type="text"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password: </label>
+            <input type="text"
               required
               className="form-control"
               value={this.state.password}
               onChange={this.onChangePassword}
-              />
-        </div>
-        <div className="form-group">
-          <label>First Name</label>
-          <input 
-              type="text" 
+            />
+          </div>
+          <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.firstname}
               onChange={this.onChangeFirstname}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Last Name</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.lastname}
               onChange={this.onChangeLastname}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>E-Mail</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>E-Mail</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.email}
               onChange={this.onChangeEmail}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.phone}
               onChange={this.onChangePhone}
-              />
-        </div>
+            />
+          </div>
 
-        <div className="form-group">
-          <label>City</label>
-          <input 
-              type="text" 
+          <div className="form-group">
+            <label>City</label>
+            <input
+              type="text"
               className="form-control"
               value={this.state.city}
               onChange={this.onChangeCity}
-              />
-        </div>
-        
+            />
+          </div>
 
-        <div className="form-group">
-          <input type="submit" value="Create Manager" className="btn btn-primary" />
-        </div>
-      </form>
-    </div>
+
+          <div className="form-group">
+            <input type="submit" value="Create Manager" className="btn btn-primary" />
+          </div>
+        </form>
+      </div>
     )
   }
 }
