@@ -35,6 +35,7 @@ export default class ViewTargets extends Component {
     }
 
     deleteTarget(id) {
+        if (!confirm("This action cannot be undone!")) return;
         axios.delete('http://localhost:8080/targets/' + id)
             .then(response => { console.log(response.data) });
 

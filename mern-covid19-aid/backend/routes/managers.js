@@ -11,14 +11,14 @@
 const router = require('express').Router();
 let Manager = require('../models/manager.model');
 
-// localhost:port/managers/
+// GET localhost:port/managers/
 router.route('/').get((req, res) => {
     Manager.find()
     .then(managers => res.json(managers))
     .catch(err => res.status(400).json('Error: ' + err));
 }); 
 
-// localhost:port/managers/add
+// POST localhost:port/managers/add
 router.route('/add').post((req, res) => {
     
     // get the needed fields from the request body

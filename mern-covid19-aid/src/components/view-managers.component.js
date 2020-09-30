@@ -37,6 +37,7 @@ export default class ViewManagers extends Component {
   }
 
   deleteManager(id) {
+    if (!confirm("This action cannot be undone!")) return;
     axios.delete('http://localhost:8080/managers/' + id)
       .then(response => { console.log(response.data) });
 

@@ -37,6 +37,7 @@ export default class ViewDistributors extends Component {
   }
 
   deleteDistributor(id) {
+    if (!confirm("This action cannot be undone!")) return;
     axios.delete('http://localhost:8080/distributors/' + id)
       .then(response => { console.log(response.data) });
 
